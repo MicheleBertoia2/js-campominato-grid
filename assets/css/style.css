@@ -33,7 +33,7 @@ body {
   box-shadow: 0 0 20px darkred ;
 }
 
-.buttons .start-game {
+.buttons .btn {
   border: 1px solid chocolate;
   border-radius: 5px;
   padding: 10px 20px;
