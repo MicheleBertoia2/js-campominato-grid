@@ -20,6 +20,7 @@ Steps
 BONUS
 6.creo la select in html e la aggiungo agli elementi
 7.creo una funzione per la scelta della difficoltà
+8. la aggiungo alla select della difficoltà
 */
 
 //1.
@@ -34,6 +35,7 @@ let numeroCelle       = 100
 
 
 //-----------------------------------
+//8.
 inputDifficoltà.addEventListener('click', function() {
   numeroCelle = sceltaDifficolta()  
   })
@@ -59,8 +61,8 @@ startGame.addEventListener('click', function(){
 
     // 5.
     reset.addEventListener('click', function () {
-      griglia.remove()
-      // difficoltà = 'nd';  
+      griglia.remove();
+      grigliaEsiste = false;
     })
   }else{
     alert('Hai già una partita in corso')
@@ -88,8 +90,11 @@ function generatoreQuadri(numInterno) {
    return newSquare;
 }
 
-
-
+//7.
+/**
+ * la funzione ritorna il numero di celle in base alla difficoltà
+ * @returns 
+ */
 function sceltaDifficolta (){
   let celleInBaseDifficolta = 0;
   let difficoltà      = inputDifficoltà.value;
