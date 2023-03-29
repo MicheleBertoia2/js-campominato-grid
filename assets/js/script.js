@@ -16,35 +16,61 @@ Steps
 3. ciclo la generazione di blocchi
 4. lego la generazione al click del bottone "gioca"
 5. aggiungo un bottone di reset
+
+BONUS
+6.creo la select in html e la aggiungo agli elementi
+7.imposto uno switch nel bottone per far cambiare i parametri di gioco
 */
 
 //1.
 //---------------elements--------
 
-const reset     = document.querySelector('.reset');
-const startGame = document.querySelector('.start-game');
-const campoGriglia   = document.querySelector('.grid-camp');
+const reset           = document.querySelector('.reset');
+const startGame       = document.querySelector('.start-game');
+const campoGriglia    = document.querySelector('.grid-camp');
+//6.
+// const inputDifficoltà = document.querySelector('.difficulty');
+// let difficoltà      = inputDifficoltà.value;
+let numeroCelle       = 100
 
 
 //-----------------------------------
+
+
+let grigliaEsiste = false;
 //4.
 startGame.addEventListener('click', function(){
-  const griglia = document.createElement('div')
-  griglia.classList.add('grid', 'hide')
-  campoGriglia.appendChild(griglia);
-  griglia.classList.remove('hide');
-  //3.
-  
-  for (let i = 1; i < 101; i++) {
-    const squareReady = generatoreQuadri(i);
-    griglia.append(squareReady);
-    
-  }
+  TODO://sistemare scelta difficoltà
+  // if (difficoltà === 'easy') {
+  //   numeroCelle = 100;
+  // }else if (difficoltà === 'medium'){
+  //   numeroCelle = 81;
+  // }else if (difficoltà === 'hard'){
+  //   numeroCelle = 49;
+  // }
 
-  // 5.
-  reset.addEventListener('click', function () {
-    griglia.remove()  
-  })
+  if(grigliaEsiste === false){
+    griglia = document.createElement('div')
+    griglia.classList.add('grid')
+    campoGriglia.appendChild(griglia);
+    grigliaEsiste = true;
+    console.log(grigliaEsiste);
+
+    //3.  
+    for (let i = 1; i < numeroCelle + 1; i++) {
+      const squareReady = generatoreQuadri(i);
+      griglia.append(squareReady);
+      
+    }
+
+    // 5.
+    reset.addEventListener('click', function () {
+      griglia.remove()
+      // difficoltà = 'nd';  
+    })
+  }else{
+    alert('Hai già una partita in corso')
+  }
 })
 
 
@@ -52,6 +78,11 @@ startGame.addEventListener('click', function(){
 //2.
 //--------------functions-----------
 
+/**
+ * Genera un blocco già cliccabile con assegnato come proprietà custom il numero passato
+ * @param {number} numInterno 
+ * @returns quadrato griglia cliccabile e numerato internamente
+ */
 function generatoreQuadri(numInterno) {
    const newSquare = document.createElement('div');
    newSquare.classList.add('square');

@@ -23,7 +23,7 @@ body {
 
 .buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 90%;
   padding: 50px;
   background-color: orange;
