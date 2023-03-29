@@ -19,7 +19,7 @@ Steps
 
 BONUS
 6.creo la select in html e la aggiungo agli elementi
-7.imposto uno switch nel bottone per far cambiare i parametri di gioco
+7.creo una funzione per la scelta della difficoltà
 */
 
 //1.
@@ -29,25 +29,19 @@ const reset           = document.querySelector('.reset');
 const startGame       = document.querySelector('.start-game');
 const campoGriglia    = document.querySelector('.grid-camp');
 //6.
-// const inputDifficoltà = document.querySelector('.difficulty');
-// let difficoltà      = inputDifficoltà.value;
+const inputDifficoltà = document.querySelector('.difficulty');
 let numeroCelle       = 100
 
 
 //-----------------------------------
-
-
+inputDifficoltà.addEventListener('click', function() {
+  numeroCelle = sceltaDifficolta()  
+  })
+  // TODO:sistemare grandezze griglia e quadrati in base alla difficoltà
 let grigliaEsiste = false;
 //4.
 startGame.addEventListener('click', function(){
-  TODO://sistemare scelta difficoltà
-  // if (difficoltà === 'easy') {
-  //   numeroCelle = 100;
-  // }else if (difficoltà === 'medium'){
-  //   numeroCelle = 81;
-  // }else if (difficoltà === 'hard'){
-  //   numeroCelle = 49;
-  // }
+ 
 
   if(grigliaEsiste === false){
     griglia = document.createElement('div')
@@ -93,3 +87,19 @@ function generatoreQuadri(numInterno) {
    })
    return newSquare;
 }
+
+
+
+function sceltaDifficolta (){
+  let celleInBaseDifficolta = 0;
+  let difficoltà      = inputDifficoltà.value;
+  if (difficoltà === 'easy') {
+    celleInBaseDifficolta = 100;
+    }else if (difficoltà === 'medium'){
+      celleInBaseDifficolta = 81;
+    }else if (difficoltà === 'hard'){
+      celleInBaseDifficolta = 49;
+    }
+  return celleInBaseDifficolta
+}
+
